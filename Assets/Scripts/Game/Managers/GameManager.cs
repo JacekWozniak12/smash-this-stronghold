@@ -6,8 +6,5 @@ namespace SmashStronghold.Game.Managers
     public class GameManager : BaseManager<GameManager>
     {
         
-        
-
-        
     }
 }

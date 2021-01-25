@@ -344,7 +344,7 @@ Transform:
   m_Children:
   - {fileID: 453121286}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &453121285
 GameObject:
@@ -357,7 +357,7 @@ GameObject:
   - component: {fileID: 453121286}
   - component: {fileID: 453121287}
   m_Layer: 0
-  m_Name: Light
+  m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -659,5 +659,5 @@ Transform:
   - {fileID: 1395047741}
   - {fileID: 1148746629}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

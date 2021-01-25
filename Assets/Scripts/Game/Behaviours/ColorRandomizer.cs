@@ -7,23 +7,11 @@ namespace SmashStronghold.Game.Behaviours
 {
     public class ColorRandomizer : MonoBehaviour, IColorHandler
     {
-        [SerializeField]
-        private Color min = Color.black;
-
-        [SerializeField]
-        private Color max = Color.cyan;
-
-        [SerializeField]
-        private bool RGB = false;
-
-        [SerializeField]
-        private bool getFromColorManager = true;
+        public string colorGroup;
 
         private void Awake()
         {
-            UpdateData();
             AddToManager();
-            RefreshColor();
         }
 
         private void AddToManager()
@@ -31,32 +19,9 @@ namespace SmashStronghold.Game.Behaviours
             ColorManager.Instance.Subscribe(this);
         }
 
-        private void UpdateData()
-        {
-            if (getFromColorManager)
-            {
-                min = ColorManager.Instance.min;
-                max = ColorManager.Instance.max;
-            }
-        }
-
         public void RefreshColor()
         {
-            UpdateData();
-            if (RGB) SetMaterialFromRGB();
-            else SetMaterialFromHSV();   
-        }
-
-        private void SetMaterialFromHSV()
-        {
-            Color.RGBToHSV(min, out float hMin, out float sMin, out float vMin);
-            Color.RGBToHSV(max, out float hMax, out float sMax, out float vMax);
-            GetComponent<MeshRenderer>().material.color = UnityEngine.Random.ColorHSV(hMin, hMax, sMin, sMax, vMin, vMax);
-        }
-
-        private void SetMaterialFromRGB()
-        {
-            GetComponent<MeshRenderer>().material.color = ColorL.GetRandomColorRGB(min, max);
+            GetComponent<Renderer>().material = ColorManager.Instance.GetRandomColorFromGroup(colorGroup);
         }
     }
 }

@@ -154,8 +154,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a0b618d9e0950419610455d5bc59d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: {r: 1, g: 0.40400004, b: 0.40400004, a: 1}
-  max: {r: 1, g: 0.681, b: 0.681, a: 1}
+  groups:
+  - groupName: Blocks
+    min: {r: 1, g: 1, b: 1, a: 1}
+    max: {r: 1, g: 0.20599997, b: 0.20599997, a: 1}
+    material: {fileID: 2100000, guid: 4c7a670b8140033409836765c50c51aa, type: 2}
+    materialVariations:
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
 --- !u!4 &140772893
 Transform:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ namespace SmashStronghold.Game.Entities
 
         private void Start()
         {
-            gameObject.AddComponent<ColorRandomizer>();
+            gameObject.AddComponent<ColorRandomizer>().colorGroup = "Blocks";
             gameObject.AddComponent<AudioSource>();
             audioSource = GetComponent<AudioSource>();
             audioSource.outputAudioMixerGroup = AudioManager.Instance.AudioMixers.Find(x => x.name == "Main").FindMatchingGroups("Blocks")[0];
