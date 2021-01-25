@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a0b618d9e0950419610455d5bc59d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  min: {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 1}
-  max: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+  min: {r: 0.8679245, g: 0.12691349, b: 0.12691349, a: 1}
+  max: {r: 0.7075472, g: 0, b: 0.4780884, a: 1}
 --- !u!4 &140772893
 Transform:
   m_ObjectHideFlags: 0

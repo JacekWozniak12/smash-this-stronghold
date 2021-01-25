@@ -18,7 +18,6 @@ namespace SmashStronghold.Game.Entities
         AudioSource audioSource;
         new Rigidbody rigidbody;
 
-
         private void Start()
         {
             gameObject.AddComponent<ColorRandomizer>();
