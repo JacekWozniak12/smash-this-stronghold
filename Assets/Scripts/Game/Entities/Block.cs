@@ -10,24 +10,26 @@ namespace SmashStronghold.Game.Entities
         [SerializeField]
         MusicalAudioData hitData;
         AudioSource audioSource;
+        new Rigidbody rigidbody;
 
 
-        private void Awake()
+        private void Start()
         {
             gameObject.AddComponent<ColorRandomizer>();
             gameObject.AddComponent<AudioSource>();
             audioSource = GetComponent<AudioSource>();
+            rigidbody = GetComponent<Rigidbody>();
+            rigidbody.sleepThreshold = 2;
         }
 
         private bool CanPlaySound() => delayBeforeNext <= 0;
 
-
         private float time = 0.5f;
         private float delayBeforeNext;
 
-        private void Update()
+        private void FixedUpdate()
         {
-            if(delayBeforeNext > 0) delayBeforeNext -= Time.deltaTime;
+            if(delayBeforeNext > 0) delayBeforeNext -= Time.fixedDeltaTime;
         }
 
         private void OnCollisionEnter(Collision other)

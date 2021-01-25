@@ -51,5 +51,12 @@ public class Controller : MonoBehaviour
         rigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
         rigidbody.AddForce(direction * force, ForceMode.Impulse);
         beforeNextShot = reloadSpeed;
+        StartCoroutine(KillGameObject(copy));
+    }
+
+    private IEnumerator KillGameObject(GameObject go)
+    {
+        yield return new WaitForSeconds(10);
+        Destroy(go);
     }
 }
