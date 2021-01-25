@@ -3,7 +3,10 @@ using UnityEngine;
 
 namespace SmashStronghold.Game.Behaviours
 {
-    public class ChangeHueWhenDamaged : MonoBehaviour
+    /// <summary>
+    /// Changes HSV's values on damage
+    /// </summary>
+    public class ChangeHSVColorValueWhenDamaged : MonoBehaviour
     {
         Color starting;
         Material modifiedMaterial;
@@ -24,10 +27,9 @@ namespace SmashStronghold.Game.Behaviours
                 starting = modifiedMaterial.color;
             }
             Color temp = starting;
-            
+
             Color.RGBToHSV(temp, out float hue, out float saturation, out float value);
             float tempHealth = (float) damageable.Health / (float) damageable.MaxHealth;
-            saturation = Mathf.Lerp(0, saturation, tempHealth);
             value = Mathf.Lerp(0, value, tempHealth);
 
             modifiedMaterial.color = Color.HSVToRGB(hue, saturation, value);

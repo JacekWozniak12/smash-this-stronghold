@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using SmashStronghold.Game.Behaviours;
 using UnityEngine;
 
-public class Controller : MonoBehaviour
+public class SimpleMouseController : MonoBehaviour
 {
     [SerializeField]
     private GameObject projectile;

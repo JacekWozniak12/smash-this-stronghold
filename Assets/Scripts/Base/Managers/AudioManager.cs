@@ -16,6 +16,10 @@ namespace SmashStronghold.Base.Managers
         }
 
         private bool mute = true;
+        private void Start()
+        {
+            if(mute) muteMixers();
+        }
 
         private void Update()
         {
@@ -24,20 +28,29 @@ namespace SmashStronghold.Base.Managers
                 mute = !mute;
                 if (mute)
                 {
-                    foreach (AudioMixer mixer in audioMixers)
-                    {
-                        mixer.SetFloat("MasterVolume", -80);
-                    }
+                    muteMixers();
                 }
                 else
                 {
-                    foreach (AudioMixer mixer in audioMixers)
-                    {
-                        mixer.SetFloat("MasterVolume", 0);
-                    }
-                }    
+                    unmuteMixers();
+                }
             }
         }
 
+        private void unmuteMixers()
+        {
+            foreach (AudioMixer mixer in audioMixers)
+            {
+                mixer.SetFloat("MasterVolume", 0);
+            }
+        }
+
+        private void muteMixers()
+        {
+            foreach (AudioMixer mixer in audioMixers)
+            {
+                mixer.SetFloat("MasterVolume", -80);
+            }
+        }
     }
 }
