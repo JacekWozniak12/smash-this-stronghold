@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SmashStronghold.Game.Behaviours;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -33,6 +34,11 @@ public class Controller : MonoBehaviour
             if (Input.GetMouseButton(0))
             {
                 HandleShooting();
+                return;
+            }
+            if (Input.GetMouseButton(1))
+            {
+                HandleShootingExplosive();
             }
         }
     }
@@ -43,7 +49,13 @@ public class Controller : MonoBehaviour
         ProjectileSpawn(ray.direction);
     }
 
-    private void ProjectileSpawn(Vector3 direction)
+    private void HandleShootingExplosive()
+    {
+        Ray ray = handler.ScreenPointToRay(Input.mousePosition);
+        ProjectileSpawn(ray.direction).AddComponent<ExplodeOnHit>();
+    }
+
+    private GameObject ProjectileSpawn(Vector3 direction)
     {
         var copy = Instantiate(projectile, transform.position + transform.forward, transform.rotation);
         var rigidbody = copy.AddComponent<Rigidbody>();
@@ -52,11 +64,12 @@ public class Controller : MonoBehaviour
         rigidbody.AddForce(direction * force, ForceMode.Impulse);
         beforeNextShot = reloadSpeed;
         StartCoroutine(KillGameObject(copy));
+        return copy;
     }
 
     private IEnumerator KillGameObject(GameObject go)
     {
         yield return new WaitForSeconds(10);
-        Destroy(go);
+        if (go != null) Destroy(go);
     }
 }

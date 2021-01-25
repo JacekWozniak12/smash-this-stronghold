@@ -1,6 +1,8 @@
 using SmashStronghold.Base.Data;
+using SmashStronghold.Base.Managers;
 using SmashStronghold.Game.Behaviours;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace SmashStronghold.Game.Entities
 {
@@ -9,6 +11,10 @@ namespace SmashStronghold.Game.Entities
     {
         [SerializeField]
         MusicalAudioData hitData;
+
+        [SerializeField]
+        AudioMixer audioMixer;
+
         AudioSource audioSource;
         new Rigidbody rigidbody;
 
@@ -18,6 +24,7 @@ namespace SmashStronghold.Game.Entities
             gameObject.AddComponent<ColorRandomizer>();
             gameObject.AddComponent<AudioSource>();
             audioSource = GetComponent<AudioSource>();
+            audioSource.outputAudioMixerGroup = AudioManager.Instance.AudioMixers.Find(x => x.name == "Main").FindMatchingGroups("Blocks")[0];
             rigidbody = GetComponent<Rigidbody>();
             rigidbody.sleepThreshold = 2;
         }
@@ -29,7 +36,7 @@ namespace SmashStronghold.Game.Entities
 
         private void FixedUpdate()
         {
-            if(delayBeforeNext > 0) delayBeforeNext -= Time.fixedDeltaTime;
+            if (delayBeforeNext > 0) delayBeforeNext -= Time.fixedDeltaTime;
         }
 
         private void OnCollisionEnter(Collision other)
