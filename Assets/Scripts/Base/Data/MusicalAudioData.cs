@@ -7,18 +7,21 @@ namespace SmashStronghold.Base.Data
     [CreateAssetMenu(fileName = "MusicalAudioData", menuName = "smash-this-stronghold/MusicalAudioData", order = 0)]
     public class MusicalAudioData : ScriptableObject, IAudioDeliver
     {
-        public AudioClip[] clips;
-        public FloatMinMax volume;
+        public AudioClip[] Clips;
+        public FloatMinMax Volume;
 
-        public IntMinMax range;
-        private float Modifier = Mathf.Pow (2f,1.0f/12f);
-        
+        public IntMinMax Range;
+        private float Modifier = Mathf.Pow(2f, 1.0f / 12f);
+
+        [Range(1, 12)]
+        public int SemitoneJump = 1;
+
         public void GetSound(out AudioClip clip, out float volume, out float pitch)
         {
-            clip = clips[Random.Range(0, clips.Length)];
-            volume = Random.Range(this.volume.min, this.volume.max);
-            
-            float note = Random.Range(this.range.min, this.range.max);
+            clip = Clips[Random.Range(0, Clips.Length)];
+            volume = Random.Range(this.Volume.min, this.Volume.max);
+            int note = Random.Range(this.Range.min, this.Range.max);
+            note = note / SemitoneJump;
             pitch = Mathf.Pow(Modifier, note);
         }
     }

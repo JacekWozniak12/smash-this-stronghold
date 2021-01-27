@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85ccbb75fe2160b4588d16f90ae332e7, type: 3}
   m_Name: MusicalBlockHit
   m_EditorClassIdentifier: 
-  clips:
+  Clips:
   - {fileID: 8300000, guid: 792ea9ad4409edf4e859e26f7283d0d1, type: 3}
-  volume:
+  Volume:
+    min: 0.5
+    max: 0.5
+  Range:
     min: 1
-    max: 1
-  range:
-    min: 1
-    max: 15
+    max: 8
+  SemitoneJump: 3

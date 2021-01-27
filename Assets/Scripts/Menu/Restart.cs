@@ -6,6 +6,9 @@ namespace SmashStronghold.Menu.Behaviours
     public class Restart : MonoBehaviour
     {
         string scene;
+        
+        [SerializeField]
+        KeyCode keyCode = KeyCode.F7;
 
         private void Awake()
         {
@@ -14,7 +17,7 @@ namespace SmashStronghold.Menu.Behaviours
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.R)) SceneManager.LoadScene(scene);
+            if (Input.GetKeyDown(keyCode)) SceneManager.LoadScene(scene);
         }
     }
 }
