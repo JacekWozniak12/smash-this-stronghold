@@ -10,13 +10,17 @@ namespace SmashStronghold.Game.Entities
     public class Block : MonoBehaviour
     {
         [SerializeField]
-        MusicalAudioData hitData;
+        private MusicalAudioData hitData;
 
         [SerializeField]
-        AudioMixer audioMixer;
+        private AudioMixer audioMixer;
 
-        AudioSource audioSource;
-        new Rigidbody rigidbody;
+        [SerializeField]
+        [Range(1, 20)]
+        private float sleepThreshold = 2;
+
+        private AudioSource audioSource;
+        private new Rigidbody rigidbody;
 
         private void Start()
         {
@@ -25,7 +29,7 @@ namespace SmashStronghold.Game.Entities
             audioSource = GetComponent<AudioSource>();
             audioSource.outputAudioMixerGroup = AudioManager.Instance.AudioMixers.Find(x => x.name == "Main").FindMatchingGroups("Blocks")[0];
             rigidbody = GetComponent<Rigidbody>();
-            rigidbody.sleepThreshold = 2;
+            rigidbody.sleepThreshold = sleepThreshold;
         }
 
         private bool CanPlaySound() => delayBeforeNext <= 0;

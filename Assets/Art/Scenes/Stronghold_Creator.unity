@@ -161,7 +161,7 @@ MonoBehaviour:
   can: {fileID: 2100000, guid: b539d788201a31d46891a12c3c18e269, type: 2}
   cant: {fileID: 2100000, guid: a018cffb4977b114e93598edc27b3b88, type: 2}
   deletion: {fileID: 2100000, guid: 3291036afa2904845b5dcdd9c47dc76b, type: 2}
-  gridSize: 0.5
+  gridSize: 0.25
   items: []
 --- !u!4 &157898258
 Transform:
