@@ -15,6 +15,7 @@ namespace SmashStronghold.Base.Managers
             set { audioMixers = value; }
         }
 
+        [SerializeField]
         private bool mute = true;
         private void Start()
         {

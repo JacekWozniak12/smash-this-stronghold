@@ -11,16 +11,16 @@ namespace SmashStronghold.Game.Entities
         private string groupName;
 
         [SerializeField]
-        Color min;
+        private Color min;
 
         [SerializeField]
-        Color max;
+        private Color max;
 
         [SerializeField]
-        Material material;
+        private Material material;
 
         [SerializeField]
-        Material[] materialVariations;
+        private Material[] materialVariations;
 
         public string GroupName { get => groupName; private set => groupName = value; }
 
@@ -32,10 +32,7 @@ namespace SmashStronghold.Game.Entities
             this.material = material;
             materialVariations = new Material[amount];
 
-            for (int i = 0; i < amount; i++)
-            {
-                materialVariations[i] = CreateRandomMaterial(material);
-            }
+            GenerateVariations();
         }
 
         [ContextMenu("Generate Material Variations")]

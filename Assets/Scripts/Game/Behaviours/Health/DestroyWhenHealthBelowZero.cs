@@ -10,7 +10,7 @@ namespace SmashStronghold.Game.Behaviours
             GetComponent<Damageable>().HealthZeroOrBelow += Act; 
         }
 
-        private void Act()
+        private void Act(Damageable damageable)
         {
             StartCoroutine(WaitAndDie());
         }

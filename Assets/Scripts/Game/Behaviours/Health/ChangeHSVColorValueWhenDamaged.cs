@@ -19,7 +19,7 @@ namespace SmashStronghold.Game.Behaviours
             damageable.Healed += ChangeColor;
         }
 
-        private void ChangeColor()
+        private void ChangeColor(Damageable damageable)
         {
             if (modifiedMaterial == null)
             {

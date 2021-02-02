@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 140772892}
   - component: {fileID: 140772894}
   - component: {fileID: 140772895}
+  - component: {fileID: 140772896}
   m_Layer: 0
   m_Name: MANAGERS
   m_TagString: Untagged
@@ -156,8 +157,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groups:
   - groupName: Blocks
-    min: {r: 1, g: 1, b: 1, a: 1}
-    max: {r: 1, g: 0.20599997, b: 0.20599997, a: 1}
+    min: {r: 0.9622642, g: 0.6853863, b: 0.6853863, a: 1}
+    max: {r: 1, g: 0.495283, b: 0.495283, a: 1}
     material: {fileID: 2100000, guid: 4c7a670b8140033409836765c50c51aa, type: 2}
     materialVariations:
     - {fileID: 0}
@@ -209,6 +210,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixers:
   - {fileID: 24100000, guid: c52f9a273c9da5a44af625c5941aae70, type: 2}
+  mute: 0
+--- !u!114 &140772896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140772891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c8f490fb7bb9d44b02b0f5fb5b662b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groups: []
 --- !u!4 &171102517 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 797053131610551589, guid: 201f1b191db1803448d6d71fe63e418e, type: 3}
@@ -474,8 +489,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 6402002503839687404, guid: 2cfd6339c07820a45955599aabcdbc52, type: 3}
-  reloadSpeed: 1
-  force: 500
+  reloadSpeed: 0.33
+  force: 1500
   weight: 10
 --- !u!1 &966223679
 GameObject:
@@ -823,7 +838,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1498664344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 171102517}
@@ -937,21 +952,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f642b46e7204b4ab57ae988a14618d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ForceMinimalMaximal:
-    min: 100
-    max: 2000
-  force: 1500
-  weight: 50
-  reloadSpeed: 1
-  gunXRotationMinimalMaximal:
-    min: 0
-    max: 0
-  gunXRotation: 0
-  rotationSpeed: 1
-  projectile: {fileID: 6402002503839687404, guid: 2cfd6339c07820a45955599aabcdbc52, type: 3}
-  projectileSpawner: {fileID: 1658476674}
-  body: {fileID: 535167126}
-  cannon: {fileID: 2087229459}
 --- !u!1 &1777469641
 GameObject:
   m_ObjectHideFlags: 0
@@ -1134,6 +1134,14 @@ PrefabInstance:
     - target: {fileID: 797053131610551589, guid: 201f1b191db1803448d6d71fe63e418e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121714345264008395, guid: 201f1b191db1803448d6d71fe63e418e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5121714345264008395, guid: 201f1b191db1803448d6d71fe63e418e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7942588559508092112, guid: 201f1b191db1803448d6d71fe63e418e, type: 3}

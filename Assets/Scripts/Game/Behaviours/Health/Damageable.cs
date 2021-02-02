@@ -14,9 +14,15 @@ namespace SmashStronghold.Game.Behaviours
         public int MaxHealth { get => maxHealth; private set => maxHealth = value; }
         public int Health { get => health; private set => health = value; }
 
-        public event Action HealthZeroOrBelow;
-        public event Action Damaged;
-        public event Action Healed;
+        public event Action<Damageable> HealthZeroOrBelow;
+        public event Action<Damageable> Damaged;
+        public event Action<Damageable> Healed;
+
+        public void SetStartingHealth(int amount)
+        {
+            MaxHealth = amount;
+            Health = amount;
+        }
 
         /// <summary>
         /// Subtracts absolute amount to entity health
@@ -26,10 +32,10 @@ namespace SmashStronghold.Game.Behaviours
             Health -= Mathf.Abs(amount);
             if (Health <= 0) 
             {
-                HealthZeroOrBelow?.Invoke();
+                HealthZeroOrBelow?.Invoke(this);
                 return;
             }
-            Damaged?.Invoke();
+            Damaged?.Invoke(this);
         }
 
         /// <summary>
@@ -40,7 +46,7 @@ namespace SmashStronghold.Game.Behaviours
         {
             Health += Mathf.Abs(amount);
             if(Health > MaxHealth) Health = MaxHealth;
-            Healed?.Invoke();
+            Healed?.Invoke(this);
         }
     }
 }

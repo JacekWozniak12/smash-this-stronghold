@@ -39,6 +39,9 @@ namespace SmashStronghold.Game.Behaviours
 
         public event Action BrickPlaced;
         public event Action BrickDeleted;
+        public event Action BrickRotated;
+        public event Action BrickMode;
+        public event Action BrickSelected;
 
         private const string path = "CastleBlocks/Base";
 
@@ -157,7 +160,11 @@ namespace SmashStronghold.Game.Behaviours
 
         private void BlockRotation()
         {
-            if (Input.GetKeyDown(KeyCode.R)) this.transform.Rotate(new Vector3(0, 45, 0));
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                this.transform.Rotate(new Vector3(0, 45, 0));
+                BrickRotated?.Invoke();
+            }
         }
 
         private void SwitchDeletionMode()
@@ -167,6 +174,7 @@ namespace SmashStronghold.Game.Behaviours
                 deletionMode = !deletionMode;
                 if (deletionMode) renderer.material = deletion;
                 else renderer.material = can;
+                BrickMode?.Invoke();
             }
         }
 
@@ -179,7 +187,10 @@ namespace SmashStronghold.Game.Behaviours
             if (!deletionMode && Input.GetMouseButtonDown(0))
             {
                 if (canPlace || Input.GetKey(KeyCode.LeftShift))
+                {
                     Instantiate(blocks[blockIndex], transform.position, transform.rotation);
+                    BrickPlaced?.Invoke();
+                }
             }
         }
 
@@ -194,10 +205,18 @@ namespace SmashStronghold.Game.Behaviours
                     meshFilter.mesh.bounds.size,
                     transform.rotation);
 
+                int temp = 0;
+
                 foreach (var item in Colliders)
                 {
-                    if (item.GetComponent<Block>() != null && item != this.collider) Destroy(item.gameObject);
+                    if (item.GetComponent<Block>() != null && item != this.collider)
+                    {
+                        Destroy(item.gameObject);
+                        temp++;
+                    }
                 }
+
+                if (temp > 0) BrickDeleted?.Invoke();
             }
         }
 
@@ -222,6 +241,7 @@ namespace SmashStronghold.Game.Behaviours
             meshFilter.mesh = obj.GetComponent<MeshFilter>().sharedMesh;
             collider.size = meshFilter.mesh.bounds.size;
             collider.center = meshFilter.mesh.bounds.center;
+            BrickSelected?.Invoke();
         }
 
         private GameObject[] GetBlockAssets() => Resources.LoadAll<GameObject>(path);
