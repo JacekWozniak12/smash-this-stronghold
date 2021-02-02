@@ -1,8 +1,9 @@
 using System.Collections;
+using SmashStronghold.Game.Behaviours;
 using SmashStronghold.Library.HelperL;
 using UnityEngine;
 
-namespace SmashStronghold.Game.Behaviours
+namespace SmashStronghold.Game.Entities
 {
     public class PlayerCannon : MonoBehaviour
     {
