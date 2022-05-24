@@ -17,11 +17,11 @@ namespace SmashStronghold.Game.Behaviours
             AddToManager();
         }
 
-        private void AddToManager()
-            =>  manager.Subscribe(this);
+        private void AddToManager() =>
+            manager.Subscribe(this);
 
-        public void RefreshColor()
-            =>  renderer.material = 
-                manager.GetRandomColorFromGroup(ColorGroup);
+        public void RefreshColor() =>
+            renderer.material =
+            manager.GetRandomColorFromGroup(ColorGroup);
     }
 }

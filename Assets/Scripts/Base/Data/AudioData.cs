@@ -17,5 +17,30 @@ namespace SmashStronghold.Base.Data
             volume = Random.Range(this.volume.min, this.volume.max);
             pitch = Random.Range(this.pitch.min, this.pitch.max);
         }
+
+        public AudioClipData GetSound()
+        {
+            AudioClipData data = new AudioClipData();
+            data.Clip = clips[Random.Range(0, clips.Length)];
+            data.Volume = Random.Range(this.volume.min, this.volume.max);
+            data.Pitch = Random.Range(this.pitch.min, this.pitch.max);
+
+            return data;
+        }
+    }
+
+    [System.Serializable]
+    public struct AudioClipData
+    {
+        public AudioClip Clip;
+        public float Volume;
+        public float Pitch;
+
+        public AudioClipData(AudioClip clip, float volume, float pitch)
+        {
+            Clip = clip;
+            Volume = volume;
+            Pitch = pitch;
+        }
     }
 }

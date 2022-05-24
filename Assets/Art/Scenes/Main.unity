@@ -223,7 +223,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c8f490fb7bb9d44b02b0f5fb5b662b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groups: []
+  groups:
+  - groupName: Blocks
+    audio: {fileID: 11400000, guid: 98b5c46e27c7f2c49a05f5b2fea6ae7e, type: 2}
+    PitchVariations:
+    - 1
+    - 1.1224555
+    - 1.2599063
+    - 1.3348204
+    - 1.4982765
+    - 1.6817486
+    - 1.8876879
+    - 1.9999299
 --- !u!4 &171102517 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 797053131610551589, guid: 201f1b191db1803448d6d71fe63e418e, type: 3}
@@ -359,6 +370,7 @@ MonoBehaviour:
   KeyNegative: 0
   vectorRotation: {x: 0, y: 0, z: 0}
   speed: 0
+  rigidbody: {fileID: 0}
 --- !u!1 &692006337
 GameObject:
   m_ObjectHideFlags: 0

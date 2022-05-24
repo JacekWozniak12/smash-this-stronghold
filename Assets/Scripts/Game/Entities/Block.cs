@@ -10,9 +10,6 @@ namespace SmashStronghold.Game.Entities
     public class Block : MonoBehaviour
     {
         [SerializeField]
-        private MusicalAudioData hitData;
-
-        [SerializeField]
         private AudioMixer audioMixer;
 
         [SerializeField]
@@ -22,12 +19,20 @@ namespace SmashStronghold.Game.Entities
         private AudioSource audioSource;
         private new Rigidbody rigidbody;
 
+        private AudioRandomizer audioRandomizer;
+
         private void Start()
         {
             gameObject.AddComponent<ColorRandomizer>().ColorGroup = "Blocks";
+            audioRandomizer = gameObject.AddComponent<AudioRandomizer>();
+            audioRandomizer.AudioGroup = "Blocks";
+
             gameObject.AddComponent<AudioSource>();
             audioSource = GetComponent<AudioSource>();
-            audioSource.outputAudioMixerGroup = AudioManager.Instance.AudioMixers.Find(x => x.name == "Main").FindMatchingGroups("Blocks")[0];
+            audioSource.outputAudioMixerGroup =
+                AudioManager.Instance.AudioMixers.Find(x => x.name == "Main").
+                FindMatchingGroups("Blocks")[0];
+
             rigidbody = GetComponent<Rigidbody>();
             rigidbody.sleepThreshold = sleepThreshold;
         }
@@ -44,14 +49,20 @@ namespace SmashStronghold.Game.Entities
 
         private void OnCollisionEnter(Collision other)
         {
-            if (CanPlaySound() && (other.relativeVelocity.magnitude > 20 || (other.gameObject.tag == "ground" && other.relativeVelocity.magnitude > 2)))
+            AudioClipData hitData = audioRandomizer.GetAudio();
+
+            if (CanPlaySound() && ShouldPlaySound(other))
             {
-                hitData.GetSound(out AudioClip clip, out float volume, out float pitch);
-                audioSource.volume = volume;
-                audioSource.pitch = pitch;
-                audioSource.PlayOneShot(clip);
+                audioSource.volume = hitData.Volume;
+                audioSource.pitch = hitData.Pitch;
+                audioSource.PlayOneShot(hitData.Clip);
                 delayBeforeNext = time;
             }
+        }
+
+        private bool ShouldPlaySound(Collision other)
+        {
+            return (other.relativeVelocity.magnitude > 20 || (other.gameObject.tag == "ground" && other.relativeVelocity.magnitude > 2));
         }
     }
 }

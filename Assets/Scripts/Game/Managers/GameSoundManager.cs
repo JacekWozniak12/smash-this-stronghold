@@ -26,7 +26,7 @@ namespace SmashStronghold.Game.Managers
             handlers.ForEach(x => x.RefreshAudio());
         }
 
-        public AudioData GetAudioFromGroup(string groupName) =>
+        public AudioClipData GetRandomAudioFromGroup(string groupName) =>
             groups.Find(x => x.GroupName == groupName).
             GetRandomAudio();
 
