@@ -6,21 +6,22 @@ namespace SmashStronghold.Game.Behaviours
 {
     public class ColorRandomizer : MonoBehaviour, IColorHandler
     {
-        public string colorGroup;
+        public string ColorGroup;
+        private new Renderer renderer;
+        private ColorManager manager;
 
         private void Awake()
         {
+            renderer = GetComponent<Renderer>();
+            manager = ColorManager.Instance;
             AddToManager();
         }
 
         private void AddToManager()
-        {
-            ColorManager.Instance.Subscribe(this);
-        }
+            =>  manager.Subscribe(this);
 
         public void RefreshColor()
-        {
-            GetComponent<Renderer>().material = ColorManager.Instance.GetRandomColorFromGroup(colorGroup);
-        }
+            =>  renderer.material = 
+                manager.GetRandomColorFromGroup(ColorGroup);
     }
 }

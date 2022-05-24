@@ -1,10 +1,9 @@
-using System;
 using SmashStronghold.Base.Managers;
 using UnityEngine;
 
 namespace SmashStronghold.Game.Entities
 {
-    [Serializable]
+    [System.Serializable]
     public class ColorGroup
     {
         [SerializeField]
@@ -49,19 +48,16 @@ namespace SmashStronghold.Game.Entities
             Material copy = new Material(original);
             Color.RGBToHSV(min, out float hMin, out float sMin, out float vMin);
             Color.RGBToHSV(max, out float hMax, out float sMax, out float vMax);
-            copy.color = UnityEngine.Random.ColorHSV(hMin, hMax, sMin, sMax, vMin, vMax);
+            copy.color = Random.ColorHSV(hMin, hMax, sMin, sMax, vMin, vMax);
             copy.enableInstancing = true;
             return copy;
         }
 
         public Material GetRandomMaterial()
-        {
-            return materialVariations[UnityEngine.Random.Range(0, materialVariations.Length)];
-        }
+            => materialVariations[Random.Range(0, materialVariations.Length)];
+        
 
-        public Material GetMaterial(int index)
-        {
-            return materialVariations[index];
-        }
+        public Material GetMaterial(int index) 
+            => materialVariations[index];
     }
 }

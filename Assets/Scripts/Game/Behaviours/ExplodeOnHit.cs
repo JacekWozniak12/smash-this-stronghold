@@ -4,9 +4,8 @@ namespace SmashStronghold.Game.Behaviours
 {
     public class ExplodeOnHit : MonoBehaviour
     {
-        float force = 150f;
-        float range = 15f;
-        float upwardModifier = 15f;
+        private float force = 150f, 
+        range = 15f, upwardModifier = 15f;
 
         private void OnCollisionEnter(Collision other)
         {

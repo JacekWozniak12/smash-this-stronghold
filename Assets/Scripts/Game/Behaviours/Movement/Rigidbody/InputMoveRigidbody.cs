@@ -23,12 +23,16 @@ namespace SmashStronghold.Game.Behaviours.Keyboard
         {
             if (Input.GetKey(KeyPositive))
             {
-                rigidbody.AddForce(vectorMovement * speed * Time.deltaTime, ForceMode.Acceleration);
+                rigidbody.AddForce(
+                    speed * Time.deltaTime * vectorMovement, 
+                    ForceMode.Acceleration);
             }
             else
             if (Input.GetKey(KeyNegative))
             {
-                rigidbody.AddForce(-vectorMovement * speed * Time.deltaTime, ForceMode.Acceleration);
+                rigidbody.AddForce(
+                    speed * Time.deltaTime * -vectorMovement, 
+                    ForceMode.Acceleration);
             }
         }
     }

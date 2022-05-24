@@ -11,8 +11,17 @@ namespace SmashStronghold.Game.Behaviours
         [SerializeField]
         private int maxHealth = 100;
 
-        public int MaxHealth { get => maxHealth; private set => maxHealth = value; }
-        public int Health { get => health; private set => health = value; }
+        public int MaxHealth
+        {
+            get => maxHealth;
+            private set => maxHealth = value;
+        }
+        
+        public int Health
+        {
+            get => health;
+            private set => health = value;
+        }
 
         public event Action<Damageable> HealthZeroOrBelow;
         public event Action<Damageable> Damaged;
@@ -30,7 +39,7 @@ namespace SmashStronghold.Game.Behaviours
         public void Damage(int amount)
         {
             Health -= Mathf.Abs(amount);
-            if (Health <= 0) 
+            if (Health <= 0)
             {
                 HealthZeroOrBelow?.Invoke(this);
                 return;
@@ -45,7 +54,7 @@ namespace SmashStronghold.Game.Behaviours
         public void Heal(int amount)
         {
             Health += Mathf.Abs(amount);
-            if(Health > MaxHealth) Health = MaxHealth;
+            if (Health > MaxHealth) Health = MaxHealth;
             Healed?.Invoke(this);
         }
     }

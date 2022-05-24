@@ -8,10 +8,7 @@ namespace SmashStronghold.Base.Managers
 
         public static T Instance
         {
-            get
-            {
-                return instance;
-            }
+            get => instance;
             private set { }
         }
 

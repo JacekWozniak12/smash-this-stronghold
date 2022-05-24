@@ -5,14 +5,11 @@ namespace SmashStronghold.Game.Player
 {
     public class FlyCamera : MonoBehaviour
     {
-
-        private float mainSpeed = 5.0f;
-        private float shiftAdd = 25.0f;
-        private float maxShift = 1000.0f;
-        private float camSensor = 0.25f;
+        [SerializeField]
+        private float mainSpeed = 5.0f, shiftAdd = 25.0f, 
+        maxShift = 1000.0f, camSensor = 0.25f, totalRun = 1.0f;
 
         private Vector3 lastMouse = new Vector3(255, 255, 255);
-        private float totalRun = 1.0f;
 
         private void Update()
         {
@@ -24,7 +21,7 @@ namespace SmashStronghold.Game.Player
             if (Input.GetMouseButton(2))
             {
                 lastMouse = Input.mousePosition - lastMouse;
-                
+
                 lastMouse = new Vector3(
                     -lastMouse.y * camSensor,
                     lastMouse.x * camSensor,
@@ -65,21 +62,16 @@ namespace SmashStronghold.Game.Player
             Vector3 velocity = new Vector3();
 
             if (Input.GetKey(KeyCode.W))
-            {
                 velocity += new Vector3(0, 0, 1);
-            }
+
             if (Input.GetKey(KeyCode.S))
-            {
                 velocity += new Vector3(0, 0, -1);
-            }
+
             if (Input.GetKey(KeyCode.A))
-            {
                 velocity += new Vector3(-1, 0, 0);
-            }
+
             if (Input.GetKey(KeyCode.D))
-            {
                 velocity += new Vector3(1, 0, 0);
-            }
 
             return velocity;
         }

@@ -17,7 +17,8 @@ namespace SmashStronghold.Game.Behaviours
         private void OnCollisionEnter(Collision other)
         {
             if (other.relativeVelocity.magnitude < velocityTreshold) return;
-            int tempDamage = (int)Mathf.Lerp(0, damage, other.relativeVelocity.magnitude / velocityToFullDamage);
+            float damageMax = other.relativeVelocity.magnitude / velocityToFullDamage;
+            int tempDamage = (int)Mathf.Lerp(0, damage, damageMax);
             damageable.Damage(tempDamage);
         }
     }

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85ccbb75fe2160b4588d16f90ae332e7, type: 3}
-  m_Name: MusicalBlockHit
+  m_Name: C3
   m_EditorClassIdentifier: 
   Clips:
   - {fileID: 8300000, guid: 792ea9ad4409edf4e859e26f7283d0d1, type: 3}

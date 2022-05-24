@@ -20,10 +20,10 @@ namespace SmashStronghold.Game.Behaviours
             CustomStart();
         }
 
-        protected virtual void GetAudioSource()
-        {
-            audioSource = audioSource ?? GetComponent<AudioSource>() ?? gameObject.AddComponent<AudioSource>();
-        }
+        protected virtual void GetAudioSource() =>
+            audioSource = audioSource 
+                ?? GetComponent<AudioSource>() 
+                ?? gameObject.AddComponent<AudioSource>();
 
         protected virtual void CustomStart() {}
 
@@ -39,7 +39,12 @@ namespace SmashStronghold.Game.Behaviours
 
         public void SetAudio(AudioData data)
         {
-            data.GetSound(out AudioClip clip, out float volume, out float pitch);
+            data.GetSound(
+                out AudioClip clip, 
+                out float volume, 
+                out float pitch
+                );
+
             audioSource.volume = volume;
             audioSource.pitch = pitch;
             audioSource.clip = clip;

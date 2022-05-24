@@ -10,14 +10,8 @@ namespace SmashStronghold.Game.Agents
         private GameObject projectile;
 
         [SerializeField]
-        private float reloadSpeed = 1;
-        private float beforeNextShot = 0;
-
-        [SerializeField]
-        private float force = 500;
-
-        [SerializeField]
-        private float weight = 10;
+        private float reloadSpeed = 1,
+        beforeNextShot = 0, force = 500, weight = 10;
 
         private Camera handler;
 
@@ -27,9 +21,10 @@ namespace SmashStronghold.Game.Agents
             Cursor.lockState = CursorLockMode.Confined;
         }
 
-        void Update()
+        private void Update()
         {
-            if (beforeNextShot >= 0) beforeNextShot -= Time.deltaTime;
+            if (beforeNextShot >= 0) 
+                beforeNextShot -= Time.deltaTime;
             else
             {
                 if (Input.GetMouseButton(0))

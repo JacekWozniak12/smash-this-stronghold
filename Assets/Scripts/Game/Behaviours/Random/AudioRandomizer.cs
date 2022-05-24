@@ -14,14 +14,12 @@ namespace SmashStronghold.Game.Behaviours
             AddToManager();
         }
 
-        private void AddToManager()
-        {
+        private void AddToManager() => 
             GameSoundManager.Instance.Subscribe(this);
-        }
 
         public void RefreshAudio()
         {
-            throw new System.NotImplementedException();
+            GameSoundManager.Instance.RefreshAudio();
         }
     }
 }

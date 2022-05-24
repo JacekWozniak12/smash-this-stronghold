@@ -17,9 +17,10 @@ namespace SmashStronghold.Base.Managers
 
         [SerializeField]
         private bool mute = true;
+        
         private void Start()
         {
-            if(mute) muteMixers();
+            if(mute) MuteMixers();
         }
 
         private void Update()
@@ -27,18 +28,16 @@ namespace SmashStronghold.Base.Managers
             if (Input.GetKeyDown(KeyCode.M))
             {
                 mute = !mute;
+                
                 if (mute)
-                {
-                    muteMixers();
-                }
+                    MuteMixers();
+                
                 else
-                {
-                    unmuteMixers();
-                }
+                    UnmuteMixers();
             }
         }
 
-        private void unmuteMixers()
+        private void UnmuteMixers()
         {
             foreach (AudioMixer mixer in audioMixers)
             {
@@ -46,7 +45,7 @@ namespace SmashStronghold.Base.Managers
             }
         }
 
-        private void muteMixers()
+        private void MuteMixers()
         {
             foreach (AudioMixer mixer in audioMixers)
             {
